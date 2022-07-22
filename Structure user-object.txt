@@ -1,0 +1,28 @@
+let userProfille = {
+    id: number,
+    userName: {
+      name: string,
+      lastName: string,
+      patronymic: string,
+    },
+    sex: ,
+    phoneNumber: number ,
+    birthDate:
+    registerDate:
+    photoUrl: ,
+    city: ,
+    chat: [
+      {
+        from: user,
+        dateTime: ,
+        text: 'Hibi',
+      }
+    ],
+    notesAdmin: [
+      {
+        from: adminName,
+        dateTime:
+        text: 'Перезвонить клиенту',
+      }
+    ],
+}
