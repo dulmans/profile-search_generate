@@ -1,0 +1,23 @@
+ФУНКЦИЯ ПОИСКА.
+
+По:
+Искать везде: [ city
+                userName.lastName, userName.name, userName.patronymic]
+    Город проживания [city]
+
+                                                    Собщениям в чате [chat.text]
+
+                                                    Заметкам админа [notesAdmin.text]
+
+    Полному ФИО: [userName.lastName, userName.name, userName.patronymic]
+        Фамилии [userName.lastName]
+        Имени [userName.name]
+        Отчеству [userName.patronymic]
+
+Номеру телефона [phoneNumber]
+
+Дате рождения [birthDate]
+
+Дате регистрации [registerDate]
+
+ID [id]

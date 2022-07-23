@@ -1,0 +1,1 @@
+// import dataUser from './datat.json' assert {type: 'json'};

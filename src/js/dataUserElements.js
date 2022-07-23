@@ -2703,10 +2703,10 @@ const dataLoremText = [
 СИНТАКСИС:
     GetRandomName(пол 0-мужчина 1-женщина);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-function GetRandomName(sex){
-    this.name = dataUserName[sex].name[Math.floor(Math.random() * dataUserName[sex].name.length)];
-    this.lastName = dataUserName[sex].lastName[Math.floor(Math.random() * dataUserName[sex].lastName.length)];
-    this.patronymic = dataUserName[sex].patronymic[Math.floor(Math.random() * dataUserName[sex].patronymic.length)];
+function GetRandomName(gender){
+    this.name = dataUserName[gender].name[Math.floor(Math.random() * dataUserName[gender].name.length)];
+    this.lastName = dataUserName[gender].lastName[Math.floor(Math.random() * dataUserName[gender].lastName.length)];
+    this.patronymic = dataUserName[gender].patronymic[Math.floor(Math.random() * dataUserName[gender].patronymic.length)];
 }
 
 /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
