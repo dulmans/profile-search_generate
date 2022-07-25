@@ -7,6 +7,9 @@ body {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  letter-spacing: normal;
 }
 
 .wrapper {
@@ -20,12 +23,73 @@ body {
   grid-template-rows: 100px 1fr;
 }
 
+.logo-title__container {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.logo-title__container .logo {
+  display: inline-block;
+  width: 32px;
+  height: 48px;
+  margin-right: 8px;
+}
+.logo-title__container .logo img {
+  width: 100%;
+  height: 100%;
+}
+.logo-title__container .title-text__container {
+  text-align: right;
+  display: inline-block;
+  margin-top: 10px;
+}
+.logo-title__container .title-text__container .title-site {
+  color: rgb(59, 63, 97);
+  display: inline;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+}
+
 .aside {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: aside;
   background-color: inherit;
+  padding: 100px 10px 0 80px;
+}
+.aside .aside--logo-title {
+  margin-bottom: 66px;
+}
+.aside .menu .menu-list .menu-item {
+  color: rgb(59, 63, 97);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 14px 0 14px 24px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.aside .menu .menu-list .menu-item.active {
+  position: relative;
+  padding-left: 44px;
+}
+.aside .menu .menu-list .menu-item.active::before {
+  content: "";
+  top: 50%;
+  left: 0;
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background-color: rgb(59, 63, 97);
+  margin: auto 0;
 }
 
 .header {
