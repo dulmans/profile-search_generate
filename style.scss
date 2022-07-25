@@ -1,0 +1,33 @@
+$background-page: rgb(248, 248, 251);
+
+:root{
+    --background-page-color: rgb(248, 248, 251);
+}
+
+body{
+    background-color: var(--background-page-color);
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-areas: "aside header"
+                        "aside main";
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 100px 1fr;
+}
+.aside {
+    grid-area: aside;
+    background-color: inherit;
+}
+.header {
+    grid-area: header;
+    background-color: green;
+}
+.main {
+    grid-area: main;
+    background-color: blue;
+}

@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Noto Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(../fonts/NotoSans-Bold.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../fonts/Montserrat-Regular.ttf) format('truetype');
+}

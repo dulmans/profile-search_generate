@@ -1,5 +1,4 @@
 let dataUserProfileArray = [];
-getDataUserArray(100000);
 
 /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ФУНКЦИЯ, ГЕНЕРИРУЮЩАЯ МАССИВ ЮЗЕРОВ
@@ -19,7 +18,7 @@ function getDataUserArray(amountUsers){
     dataUserProfileArray.push(new UserProfileConstruction(dataUserProfileArray.length))
   }
 
-  console.log(`${Date.now() - startTimeFunction} ms.`);
+  console.log(`%cБаза сгенерированна за: %c${Date.now() - startTimeFunction} ms.%c (%c${dataUserProfileArray.length}%c элементов)`, '', 'color: #e9c46a;', '', 'color: #2a9d8f;', '');
   dataUserProfileArray = dataUserProfileArray
   return dataUserProfileArray;
 }
@@ -44,32 +43,13 @@ function UserProfileConstruction(id){
   this.photoUrl = dataUsersPhoto[this.gender][Math.floor(Math.random() * dataUsersPhoto[this.gender].length)]; // Генерация фото юзера
 }
 
-/* function searchUser(word, arrUsers){
-  let resultSearch = [];
-  let timeSearch = {
-    filterMatch: {
-      start: 0,
-      end: 0,
-      fullTime: function() {return this.end - this.start},
-    }
-  };
-
-  {
-    timeSearch.filterMatch.start = Date.now();
-
-    let regex = new RegExp(word, 'gi');
-    resultSearch = arrUsers.filter((item) => ((`${item.userName.name} ${item.userName.lastName} ${item.userName.patronymic}`).match(regex) || []).length > 0);
-
-    timeSearch.filterMatch.end = Date.now();
-    console.log(`Filter match alg. time: ${timeSearch.filterMatch.fullTime()} ms. (res: ${resultSearch.length} elem.)`);
-  }
-  return resultSearch;
-} */
-
 /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ФУНКЦИЯ-ПОИСКОВИК, ПО БАЗЕ ЮЗЕРОВ
   СИНТАКСИС:
-    searchUserBase(ключевое значение поиска, [параметры поиска], массив с базой данных);
+    searchUserBase(ключевое значение поиска (для поиска по датам: {day: 1, month: 0, year: 2000}),
+                    [параметры поиска: id, phoneNumber, birthDate, registerDate, city,
+                                      userName.name, userName.lastName, userName.patronymic],
+                    массив с базой данных);
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 function searchUserBase(valueSearch, arrRangeSearch, arrUsersBase) {
   const startTimeFunction = Date.now();
@@ -114,13 +94,40 @@ function searchUserBase(valueSearch, arrRangeSearch, arrUsersBase) {
     };
   };
 
-  console.log(`${Date.now() - startTimeFunction} ms.`);
-  console.log(resultSearch);
+  console.log(`%cПоиск завершен за: %c${Date.now() - startTimeFunction} ms.%c (найдено %c${resultSearch.length}%c элементов)`, '', 'color: #e9c46a;', '', 'color: #2a9d8f;', '');
   return resultSearch;
 }
 
-searchUserBase({day: 18, month: 2},
-              ['registerDate', 'birthDate'],
-              dataUserProfileArray);
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ФУНКЦИЯ-КАЛЬКУЛЯТОР, КОТОРАЯ СЧИТАЕТ СКОЛЬКО ДНЕЙ ДО ДНЯ РОЖДЕНИЯ ОСТАЛОСЬ
+  СИНТАКСИС:
+    calcLeftUntilBirthday(дата дня рождения юзера);
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+function calcLeftUntilBirthday(birthDate){
+  let todayDate = new Date(); todayDate = new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate());
+  let birthThisYers = new Date(todayDate.getFullYear(), birthDate.getMonth(), birthDate.getDate());
 
-// [city, userName.lastName, userName.name, userName.patronymic],
+  if((birthThisYers.getMonth() == todayDate.getMonth()) &&
+    (birthThisYers.getDate() == todayDate.getDate())){
+    return objectLeftUntilBirthDay('today', 0)
+  }
+  else if(birthThisYers < todayDate){
+    const days = calcMillisecondsToDay(todayDate - birthThisYers);
+    if(days <= 10){
+      return objectLeftUntilBirthDay('ago', days);
+    };
+    birthThisYers = new Date((birthThisYers.getFullYear() + 1), birthDate.getMonth(), birthDate.getDate());
+  };
+  const days = calcMillisecondsToDay(birthThisYers - todayDate);
+  return objectLeftUntilBirthDay('after', days);
+
+  function objectLeftUntilBirthDay(typeVal, valueDay) {
+    return {
+      type: typeVal,
+      value: valueDay
+    };
+  }
+  function calcMillisecondsToDay(ms){
+    return ms / 86400000;
+  }
+}
